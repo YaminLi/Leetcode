@@ -28,7 +28,7 @@ public:
                 while (pre->next && pre->next->val < cur->next->val)
                     pre = pre->next;
                 ListNode* tmp = pre->next;
-//                ListNode* nxt = cur->next;
+                //                ListNode* nxt = cur->next;
                 pre->next = cur->next;
                 cur->next = cur->next->next;
                 pre->next->next = tmp;
