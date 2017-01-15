@@ -18,24 +18,15 @@ bool isValidSerialization(string preorder) {
     string node;
     stack<string> stk;
     while (getline(ss, node, ',')){
-        if (node == "#"){
-            if (!stk.empty() && stk.top() == "#"){
-                while (node=="#" && !stk.empty() && stk.top() == "#"){
-                    stk.pop();
-                    if (stk.empty()) return false;
-//                    cout << stk.top() << endl;
-                    stk.pop();
-                }
-            }
-            else{
-                stk.push(node);
-            }
+
+        while (node=="#" && !stk.empty() && stk.top() == "#"){
+            stk.pop();
+            if (stk.empty()) return false;
+                stk.pop();
         }
-        else{
-            stk.push(node);
-        }
+        stk.push(node);
     }
-    return stk.top()!="#";
+    return stk.size()==1 && stk.top()=="#";
 }
 
 int main(int argc, const char * argv[]) {
